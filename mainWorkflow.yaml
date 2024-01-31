@@ -1,4 +1,4 @@
-name: JMeter CI/CD
+name: JMeter Docker CI/CD
 
 on:
   push:
