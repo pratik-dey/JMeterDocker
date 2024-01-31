@@ -1,4 +1,4 @@
-name: JMeter CI/CD
+name: JMeter Test
 
 on:
   push:
@@ -10,11 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker Image
-        run: docker build -t jmeter .
+      - name: Build Docker image
+        run: docker build -t your_image_name .
 
-      - name: Run JMeter Test
-        run: docker run -v $PWD:/jmeter/results jmeter
+      - name: Run JMeter test and copy results
+        run: |
+          docker run --rm -v ${{ github.workspace }}/results:/scripts/results your_image_name
+          cp /scripts/results/results.jtl ${{ github.workspace }}/results.jtl
