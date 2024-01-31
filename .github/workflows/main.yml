@@ -17,4 +17,4 @@ jobs:
         run: docker build -t jmeter .
 
       - name: Run JMeter Test
-        run: docker run --rm -v ${{ github.workspace }}/results:/scripts/results jmeter cp /scripts/results/results.jtl ${{ github.workspace }}/results.jtl
+        run: docker run -v $PWD:/jmeter/results jmeter
