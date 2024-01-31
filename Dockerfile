@@ -1,9 +1,8 @@
 FROM justb4/jmeter:latest
 
-# Copy JMeter test script to the container
-COPY Petstore.jmx /jmeter/
-COPY LoginDetailsJmeter.csv /jmeter/
-COPY SearchData.csv /jmeter/
+# Copy JMeter script to the container
+COPY your_script.jmx /scripts/
 
-# Specify the entry point
-ENTRYPOINT ["jmeter", "-n", "-t", "/jmeter/Petstore.jmx", "-l", "/jmeter/results.jtl"]
+WORKDIR /scripts
+
+CMD ["sh", "-c", "jmeter -n -t your_script.jmx -l results.jtl"]
