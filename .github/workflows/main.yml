@@ -19,10 +19,10 @@ jobs:
       - name: Run JMeter test and copy results
         run: |
           docker run --rm -v ${{ github.workspace }}/results:/jmeter/results jmeter
-          cp results/results1.jtl ${{ github.workspace }}/results1.jtl
+          cp results/results2.csv ${{ github.workspace }}/results2.csv
 
       - name: Archive JTL Results
         uses: actions/upload-artifact@v2
         with:
           name: jmeter-results
-          path: results/results1.jtl
+          path: results/results2.csv
