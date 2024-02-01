@@ -17,8 +17,9 @@ jobs:
         run: docker build -t jmeter .
 
       - name: Run JMeter test and copy results
-        run:  docker run --rm -v ${{ github.workspace }}/results:/jmeter/results jmeter
-              cp /jmeter/results/results.jtl ${{ github.workspace }}/results1.jtl
+        run: |
+          docker run --rm -v ${{ github.workspace }}/results:/jmeter/results jmeter
+          cp /jmeter/results/results1.jtl ${{ github.workspace }}/results1.jtl
 
       - name: Archive JTL Results
         uses: actions/upload-artifact@v2
